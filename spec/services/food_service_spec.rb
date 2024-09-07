@@ -8,7 +8,7 @@ RSpec.describe FoodService do
                 dataType: "Branded"
               }
     query = FoodService.call_api('/fdc/v1/foods/search', params)
-
+    
     expect(query).to be_a Hash
     expect(query[:totalHits]).to be_an(Integer)
     
