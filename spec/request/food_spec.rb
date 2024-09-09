@@ -13,7 +13,6 @@ RSpec.describe 'Food Index', type: :feature do
         expect(current_path).to eq(foods_path)
         # Then I should see a total of the number of items returned by the search.
         # (sweet potatoes should find more than 30,000 results)
-        save_and_open_page
         within '.total' do
           expect(page).to have_content("Total Items found: 453555")
         end
