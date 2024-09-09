@@ -2,7 +2,8 @@ class Food
   attr :description,
         :brand_owner,
         :ingredients,
-        :gtinupc
+        :gtinupc,
+        :fdcid
 
   def initialize(data)
     @description = data[:description]

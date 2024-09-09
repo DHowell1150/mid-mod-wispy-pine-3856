@@ -13,18 +13,45 @@ RSpec.describe 'Food Index', type: :feature do
         expect(current_path).to eq(foods_path)
         # Then I should see a total of the number of items returned by the search.
         # (sweet potatoes should find more than 30,000 results)
-        expect(page).to have_content("Total Items found: 30000")
+        save_and_open_page
+        within '.total' do
+          expect(page).to have_content("Total Items found: 453555")
+        end
         # Then I should see a list of TEN foods that contain the ingredient "sweet potatoes"
-        within '.foods' do
-          within '#food-123' do
-            expect(page).to have_content("GTIN/UPC code: ")
-            expect(page).to have_content("Description: ")
-            expect(page).to have_content("Brand Owner: ")
-            expect(page).to have_content("Ingredients: ")
-          end
-          
+        within(first('.food')) do
+          expect(page).to have_css('.gtinupc')
+          expect(page).to have_css('.description')
+          expect(page).to have_css('.ingredients')
+          expect(page).to have_css('.brand_owner')
         end
       end
     end 
   end
 end
+
+
+
+# within '.foods' do
+#   within '#food-123' do
+#     expect(page).to have_content("GTIN/UPC code: ")
+#     expect(page).to have_content("Description: ")
+#     expect(page).to have_content("Brand Owner: ")
+#     expect(page).to have_content("Ingredients: ")
+#   end
+  
+# end
+
+# <section class="search-results">
+#   <table>
+#     <% @top_ten_foods.each do |food| %>
+#       <div id="food-<%= food.fdcid %>">
+#         <tr>
+#           <td>Description: <%= food.description %></td>
+#           <td>Ingredients: <%= food.ingredients %></td>
+#           <td>Upc: <%= food.gtinupc %></td>
+#           <td>Brand Owner: <%= food.brand_owner %></td>
+#         </tr>
+#       </div>
+#     <% end %>
+#   </table>
+# </section>

@@ -1,20 +1,13 @@
-<h1> Total Items Found:  </h1>
-<section class="search-results">
-  <table>
-    <% @top_ten_foods.each do |food| %>
-      <div id="food-<%= food.id %>">
-        <tr>
-          <td>Description: <%= food.description %></td>
-          <td>Brand Owner:</td>
-          <td>
-            <ul>
-              <% food.ingredients.each do |ingredient| %>
-                <li><%= ingredient %>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-      </div>
-    <% end %>
-  </table>
-</section>
+<h1> 
+  <div class="total"> Total Items found: <%= @total_results %> </div>  
+</h1>
+
+<% @top_ten_foods.each do |food| %>
+  <section class="food">
+    <li class="description">Description: <%= food.description %></li>
+    <li class="gtinupc">UPC: <%= food.gtinupc %></li>
+    <li class="ingredients">Ingredients: <%= food.ingredients %></li>
+    <li class="brand_owner">Brand Owner: <%= food.brand_owner %></li><br>
+    <br>
+  </section>
+<% end %>
